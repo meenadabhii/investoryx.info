@@ -1,0 +1,114 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body and Layout */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    padding: 20px;
+}
+
+/* Main Container */
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Styling */
+header {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #2c3e50;
+    color: white;
+}
+
+header h1 {
+    font-size: 36px;
+}
+
+/* Main Content Area */
+main {
+    margin-top: 40px;
+}
+
+/* Blog Post Section */
+.blog-posts {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 20px;
+}
+
+/* Individual Blog Post */
+.blog-post {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    transition: transform 0.3s ease;
+}
+
+.blog-post:hover {
+    transform: translateY(-10px);
+}
+
+/* Blog Post Image */
+.blog-post img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Blog Title */
+.blog-post h2 {
+    font-size: 24px;
+    margin: 15px 0;
+}
+
+/* Blog Date */
+.blog-post .date {
+    font-size: 14px;
+    color: #7f8c8d;
+}
+
+/* Blog Excerpt */
+.blog-post .excerpt {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+/* Read More Link */
+.blog-post .read-more {
+    text-decoration: none;
+    color: #2980b9;
+    font-weight: bold;
+}
+
+.blog-post .read-more:hover {
+    text-decoration: underline;
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2c3e50;
+    color: white;
+    margin-top: 40px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .blog-posts {
+        grid-template-columns: 1fr;
+    }
+}
+

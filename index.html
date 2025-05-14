@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>investoryx.info</title>
+    <link rel="icon" type="image/x-icon" href="favicon.ico.png">
+    <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+
+    <link rel="stylesheet" href="styles.css">
+
+
+    <script>
+        (function () {
+            // Initialize googletag if not already defined
+            window.googletag = window.googletag || { cmd: [] };
+
+            // Ad slot variables
+            let adSlot1, adSlot2, anchorSlot;
+            const refreshInterval = 30000; // 30 seconds - more user-friendly refresh rate
+            let refreshTimer;
+
+            // Function to set up ads
+            function setupAds() {
+                googletag.cmd.push(function () {
+                    // Setup PubAds
+                    const pubads = googletag.pubads();
+                    pubads.enableSingleRequest();
+                    pubads.setCentering(true);
+
+                    // Apply geotargeting if available
+                    if (window.geoTarget) {
+                        pubads.setLocation(window.geoTarget);
+                    }
+
+                    // Define Ad Slots with consistent IDs
+                    adSlot1 = googletag.defineSlot(
+                        '/23270265301/sahajanand_investoryx.info_native',
+                        [[300, 250], [320, 480], [250, 250], [300, 100], [336, 280]],
+                        'ad-slot-1'
+                    ).addService(pubads);
+
+                    adSlot2 = googletag.defineSlot(
+                        '/23270265301/sahajanand_investoryx.info_native',
+                        [[300, 250], [320, 480], [250, 250], [300, 100], [336, 280]],
+                        'ad-slot-2'
+                    ).addService(pubads);
+
+                    // Define anchor ad with proper ID
+                    anchorSlot = googletag.defineOutOfPageSlot(
+                        '/23270265301/sahajanand_investoryx.info_native',
+                        googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR
+                    );
+
+                    if (anchorSlot) {
+                        anchorSlot.addService(pubads);
+                        // Use the correct ID for the anchor ad
+                        anchorSlot.setElementId('ad-anchor-slot');
+                    }
+
+                    // Event listeners for ad loading
+                    pubads.addEventListener('slotRenderEnded', function (event) {
+                        // Handle ad render events if needed
+                        const slotId = event.slot.getSlotElementId();
+                        const isEmpty = event.isEmpty;
+
+                        // Example: hide containers with no ads
+                        if (isEmpty && document.getElementById(slotId)) {
+                            document.getElementById(slotId).style.display = 'none';
+                        }
+                    });
+
+                    // Enable services
+                    googletag.enableServices();
+
+                    // Display ads
+                    try {
+                        if (document.getElementById('ad-slot-1')) {
+                            googletag.display('ad-slot-1');
+                        }
+                        if (document.getElementById('ad-slot-2')) {
+                            googletag.display('ad-slot-2');
+                        }
+                        if (document.getElementById('ad-anchor-slot')) {
+                            googletag.display('ad-anchor-slot');
+                        }
+                    } catch (error) {
+                        console.log('Error displaying ads:', error);
+                    }
+
+                    // Set up periodic refresh with error handling
+                    setupAdRefresh();
+                });
+            }
+
+            // Function to handle ad refresh
+            function setupAdRefresh() {
+                if (refreshTimer) {
+                    clearInterval(refreshTimer);
+                }
+
+                refreshTimer = setInterval(function () {
+                    try {
+                        // Only refresh if slots exist and are defined
+                        const slotsToRefresh = [];
+                        if (adSlot1) slotsToRefresh.push(adSlot1);
+                        if (adSlot2) slotsToRefresh.push(adSlot2);
+
+                        if (slotsToRefresh.length > 0) {
+                            googletag.cmd.push(function () {
+                                googletag.pubads().refresh(slotsToRefresh);
+                            });
+                        }
+                    } catch (error) {
+                        console.log('Error refreshing ads:', error);
+                        clearInterval(refreshTimer); // Stop trying on persistent errors
+                    }
+                }, refreshInterval);
+            }
+
+            // Check for ad blockers (simple detection)
+            function checkAdBlocker() {
+                const testAd = document.createElement('div');
+                testAd.innerHTML = '&nbsp;';
+                testAd.className = 'adsbox';
+                document.body.appendChild(testAd);
+
+                setTimeout(function () {
+                    if (testAd.offsetHeight === 0) {
+                        console.log('Ad blocker detected');
+                        // You can show a message to users or implement fallback content
+                    }
+                    document.body.removeChild(testAd);
+                }, 100);
+            }
+
+            // Initialize ads when DOM is ready
+            if (document.readyState === 'complete' || document.readyState === 'interactive') {
+                setupAds();
+                checkAdBlocker();
+            } else {
+                document.addEventListener('DOMContentLoaded', function () {
+                    setupAds();
+                    checkAdBlocker();
+                });
+            }
+            // Clean up on page unload
+            window.addEventListener('beforeunload', function () {
+                if (refreshTimer) {
+                    clearInterval(refreshTimer);
+                }
+            });
+        })();
+
+    </script>
+
+
+
+    <style>
+        body {
+            background: linear-gradient(135deg, var(--primary-dark) 0%, var(--primary-medium) 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            overflow-x: hidden;
+            color: var(--text-light);
+        }
+
+
+        .header {
+            background: rgba(243, 242, 245, 0.95);
+            backdrop-filter: blur(15px);
+            width: 100%;
+            padding: 1rem 0;
+            box-shadow: 0 5px 25px var(--shadow-dark);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+
+        .header-content {
+            width: 100%;
+            max-width: 425px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 0 1.5rem;
+        }
+
+
+        #banner-ad {
+            width: 100%;
+            max-width: 425px;
+            margin: 1rem auto 0.5rem;
+            padding: 0.5rem;
+            background: rgba(188, 156, 219, 0.7);
+            box-shadow: 0 4px 15px var(--shadow-dark);
+            border-radius: 8px;
+            position: relative;
+            text-align: center;
+            border: 1px solid var(--accent-gold);
+        }
+
+        #banner-ad::before {
+            content: "Advertisement";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent-gold);
+            background: var(--primary-dark);
+            padding: 0 8px;
+            border-radius: 4px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .ad-divider {
+            width: 90%;
+            max-width: 425px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--accent-gold), transparent);
+            margin: 0.5rem auto;
+        }
+    </style>
+
+    <style>
+        .page-wrapper {
+            width: 100%;
+            max-width: 425px;
+            margin: 0 auto;
+            background: linear-gradient(180deg, #0d001a 0%, #1a0033 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 0 40px var(--shadow-dark);
+            border-left: 1px solid var(--accent-gold);
+            border-right: 1px solid var(--accent-gold);
+        }
+
+        #banner-ad {
+            width: 100%;
+            max-width: 425px;
+            margin: 1rem auto 0.5rem;
+            padding: 0.5rem;
+            background: rgba(177, 142, 211, 0.7);
+            box-shadow: 0 4px 15px var(--shadow-dark);
+            border-radius: 8px;
+            position: relative;
+            text-align: center;
+            border: 1px solid var(--accent-gold);
+        }
+
+        #banner-ad::before {
+            content: "Advertisement";
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 0.7rem;
+            font-weight: 500;
+            color: var(--accent-gold);
+            background: var(--primary-dark);
+            padding: 0 8px;
+            border-radius: 4px;
+            border: 1px solid var(--accent-gold);
+        }
+
+        .tabs-container {
+            width: 100%;
+            max-width: 425px;
+            padding: 1rem;
+            background: rgba(178, 145, 209, 0.95);
+            border-bottom: 2px solid var(--accent-gold);
+        }
+
+        */ .tab-content.active {
+            display: block;
+        }
+
+        .category-title {
+            font-size: 1.5rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            text-align: center;
+            margin-bottom: 1rem;
+            text-shadow: 0 2px 10px var(--shadow-light);
+            font-family: 'Orbitron', sans-serif;
+        }
+    </style>
+
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1>investoryx.info</h1>
+            <p>Latest financial news, tips, and articles to manage your money wisely.</p>
+        </div>
+    </header>
+
+    <!-- ads  -->
+    <div id="banner-ad" class="ads-box">
+        <div id="ad-slot-1" class="ad-container"></div>
+        
+    </div>
+
+    <main class="container">
+        <div class="blog-container">
+            <div class="blog-posts">
+                <!-- Blog Post 1 -->
+                <article class="blog-post">
+                    <img src="images/1.jpg" alt="Retirement Saving">
+                    <h2>How to Save for Retirement</h2>
+                    <p class="date">Posted on January 1, 2025</p>
+                    <p class="excerpt">Saving for retirement is essential for a secure future. Here's how to start
+                        planning today...</p>
+                    <a href="blog/blog-detail-1.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-post">
+                    <img src="images/2.gif" alt="Investment Strategies">
+                    <h2>The Best Investment Strategies for Beginners</h2>
+                    <p class="date">Posted on January 2, 2025</p>
+                    <p class="excerpt">Investing can be daunting for beginners, but with the right strategies, anyone
+                        can start growing their wealth...</p>
+                    <a href="blog/blog-detail-2.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-post">
+                    <img src="images/3.jpg" alt="Stock Market 101">
+                    <h2>Understanding the Stock Market</h2>
+                    <p class="date">Posted on January 3, 2025</p>
+                    <p class="excerpt">The stock market is one of the best places to grow your wealth over time. Here's
+                        what you need to know to get started...</p>
+                    <a href="blog/blog-detail-3.html" class="read-more">Read more</a>
+                </article>
+
+              
+
+                <!-- Blog Post 4 -->
+                <article class="blog-post">
+                    <img src="images/4.jpg" alt="Credit Score">
+                    <h2>Top 5 Ways to Improve Your Credit Score</h2>
+                    <p class="date">Posted on January 4, 2025</p>
+                    <p class="excerpt">A good credit score is essential for securing loans and mortgages. Here are the
+                        top 5 ways to boost your credit score...</p>
+                    <a href="blog/blog-detail-4.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 5 -->
+                <article class="blog-post">
+                    <img src="images/5.jpg" alt="Emergency Fund">
+                    <h2>How to Build an Emergency Fund</h2>
+                    <p class="date">Posted on January 5, 2025</p>
+                    <p class="excerpt">Having an emergency fund can provide peace of mind and financial security. Here's
+                        how to start building one today...</p>
+                    <a href="blog/blog-detail-5.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 6 -->
+                <article class="blog-post">
+                    <img src="images/6.jpg" alt="Cryptocurrency Basics">
+                    <h2>Understanding Cryptocurrency</h2>
+                    <p class="date">Posted on January 6, 2025</p>
+                    <p class="excerpt">Cryptocurrency has gained massive popularity. Learn the basics of this digital
+                        currency and its potential risks and rewards...</p>
+                    <a href="blog/6.html" class="read-more">Read more</a>
+                </article>
+                  <!-- ads  -->
+                  <div id="banner-ad" class="ads-box">
+                    <div id="ad-slot-2" class="ad-container"></div>
+                </div>
+
+                <!-- Blog Post 7 -->
+                <article class="blog-post">
+                    <img src="images/7.jpg" alt="Real Estate Investing">
+                    <h2>How to Invest in Real Estate</h2>
+                    <p class="date">Posted on January 7, 2025</p>
+                    <p class="excerpt">Real estate investment can be a lucrative way to build wealth. Here's a guide to
+                        help you get started...</p>
+                    <a href="blog/7.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 8 -->
+                <article class="blog-post">
+                    <img src="images/8.jpg" alt="Tax Deductions">
+                    <h2>Maximizing Your Tax Deductions</h2>
+                    <p class="date">Posted on January 8, 2025</p>
+                    <p class="excerpt">Tax deductions can save you a lot of money. Here's how to maximize your tax
+                        deductions this year...</p>
+                    <a href="blog/8.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 9 -->
+                <article class="blog-post">
+                    <img src="images/9.jpg" alt="College Fund">
+                    <h2>Saving for Your Child's College Fund</h2>
+                    <p class="date">Posted on January 9, 2025</p>
+                    <p class="excerpt">Planning for your child's education can be overwhelming. Here's how you can start
+                        saving for college today...</p>
+                    <a href="blog/9.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 10 -->
+                <article class="blog-post">
+                    <img src="images/10.jpg" alt="Debt Repayment">
+                    <h2>How to Pay Off Debt Faster</h2>
+                    <p class="date">Posted on January 10, 2025</p>
+                    <p class="excerpt">Paying off debt quickly can improve your financial health. Here's how to
+                        eliminate your debt faster...</p>
+                    <a href="blog/10.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 11 -->
+                <article class="blog-post">
+                    <img src="images/11.jpg" alt="Diversifying Investments">
+                    <h2>How to Diversify Your Investment Portfolio</h2>
+                    <p class="date">Posted on January 11, 2025</p>
+                    <p class="excerpt">Diversifying your portfolio is key to minimizing risk. Here's how to ensure your
+                        investments are well-balanced...</p>
+                    <a href="blog/11.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 12 -->
+                <article class="blog-post">
+                    <img src="images/12.jpg" alt="Financial Mistakes">
+                    <h2>5 Common Financial Mistakes to Avoid</h2>
+                    <p class="date">Posted on January 12, 2025</p>
+                    <p class="excerpt">Avoiding these financial mistakes can help you achieve long-term financial
+                        success. Learn what to watch out for...</p>
+                    <a href="blog/12.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 13 -->
+                <article class="blog-post">
+                    <img src="images/13.jpg" alt="Home Savings">
+                    <h2>How to Save for a Home</h2>
+                    <p class="date">Posted on January 13, 2025</p>
+                    <p class="excerpt">Saving for a home down payment requires discipline and planning. Here's how you
+                        can get started...</p>
+                    <a href="blog/13.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 14 -->
+                <article class="blog-post">
+                    <img src="images/14.jpg" alt="Dollar Cost Averaging">
+                    <h2>What is Dollar-Cost Averaging?</h2>
+                    <p class="date">Posted on January 14, 2025</p>
+                    <p class="excerpt">Dollar-cost averaging is a strategy that can help minimize investment risks.
+                        Learn how it works...</p>
+                    <a href="blog/14.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 15 -->
+                <article class="blog-post">
+                    <img src="images/15.jpg" alt="Retirement Planning">
+                    <h2>How to Plan for Retirement in Your 20s</h2>
+                    <p class="date">Posted on January 15, 2025</p>
+                    <p class="excerpt">Starting to save for retirement early can set you up for financial success later.
+                        Here's how to plan your retirement in your 20s...</p>
+                    <a href="blog/15.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 16 -->
+                <article class="blog-post">
+                    <img src="images/16.jpg" alt="Financial Literacy">
+                    <h2>The Importance of Financial Literacy</h2>
+                    <p class="date">Posted on January 16, 202
+                    <p class="date">Posted on January 16, 2025</p>
+                    <p class="excerpt">Financial literacy is key to managing your money and achieving financial freedom.
+                        Here's why it matters...</p>
+                    <a href="blog/16.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 17 -->
+                <article class="blog-post">
+                    <img src="images/17.jpg" alt="Emergency Savings Fund">
+                    <h2>Building an Emergency Savings Fund</h2>
+                    <p class="date">Posted on January 17, 2025</p>
+                    <p class="excerpt">An emergency savings fund is crucial for unexpected expenses. Learn how to create
+                        one and secure your financial future...</p>
+                    <a href="blog/17.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 18 -->
+                <article class="blog-post">
+                    <img src="images/18.jpg" alt="Saving Money on Groceries">
+                    <h2>How to Save Money on Groceries</h2>
+                    <p class="date">Posted on January 18, 2025</p>
+                    <p class="excerpt">Grocery bills can add up quickly. Here are some tips to help you save money while
+                        shopping for groceries...</p>
+                    <a href="blog/18.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 19 -->
+                <article class="blog-post">
+                    <img src="images/19.jpg" alt="Setting Financial Goals">
+                    <h2>Setting and Achieving Financial Goals</h2>
+                    <p class="date">Posted on January 19, 2025</p>
+                    <p class="excerpt">Setting financial goals is the first step to financial success. Here's how to
+                        create achievable financial goals...</p>
+                    <a href="blog/19.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 20 -->
+                <article class="blog-post">
+                    <img src="images/20.jpg" alt="Financial Planning Tools">
+                    <h2>Best Financial Planning Tools You Can Use</h2>
+                    <p class="date">Posted on January 20, 2025</p>
+                    <p class="excerpt">There are many financial planning tools available to help you manage your money.
+                        Here's a list of the best ones...</p>
+                    <a href="blog/20.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 21 -->
+                <article class="blog-post">
+                    <img src="images/21.jpg" alt="Debt Consolidation">
+                    <h2>How Debt Consolidation Can Help You</h2>
+                    <p class="date">Posted on January 21, 2025</p>
+                    <p class="excerpt">Debt consolidation can simplify your financial life. Here's how it works and how
+                        it can benefit you...</p>
+                    <a href="blog/21.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 22 -->
+                <article class="blog-post">
+                    <img src="images/22.jpg" alt="Tax Planning">
+                    <h2>Effective Tax Planning Strategies</h2>
+                    <p class="date">Posted on January 22, 2025</p>
+                    <p class="excerpt">Tax planning can save you a lot of money. Here are some effective strategies to
+                        optimize your tax situation...</p>
+                    <a href="blog/22.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 23 -->
+                <article class="blog-post">
+                    <img src="images/23.jpg" alt="Financial Advisor">
+                    <h2>Do You Need a Financial Advisor?</h2>
+                    <p class="date">Posted on January 23, 2025</p>
+                    <p class="excerpt">A financial advisor can help you manage your finances effectively. Here's how to
+                        determine if you need one...</p>
+                    <a href="blog/23.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 24 -->
+                <article class="blog-post">
+                    <img src="images/24.jpg" alt="Home Loan Tips">
+                    <h2>Top Tips for Securing a Home Loan</h2>
+                    <p class="date">Posted on January 24, 2025</p>
+                    <p class="excerpt">Securing a home loan can be challenging. Here are some expert tips to help you
+                        get approved for the home loan you need...</p>
+                    <a href="blog/24.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 25 -->
+                <article class="blog-post">
+                    <img src="images/25.jpg " alt="Insurance Planning">
+                    <h2>Why Insurance Planning is Important</h2>
+                    <p class="date">Posted on January 25, 2025</p>
+                    <p class="excerpt">Insurance planning is an essential part of a comprehensive financial strategy.
+                        Here's how to get started...</p>
+                    <a href="blog/25.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 26 -->
+                <article class="blog-post">
+                    <img src="images/26.jpg" alt="Frugal Living">
+                    <h2>Living a Frugal Life Without Sacrificing Happiness</h2>
+                    <p class="date">Posted on January 26, 2025</p>
+                    <p class="excerpt">Living frugally doesn't mean sacrificing happiness. Here are some tips on how to
+                        live a frugal life while still enjoying yourself...</p>
+                    <a href="blog/26.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 27 -->
+                <article class="blog-post">
+                    <img src="images/27.jpg" alt="Investing in Gold">
+                    <h2>Is Investing in Gold a Good Idea?</h2>
+                    <p class="date">Posted on January 27, 2025</p>
+                    <p class="excerpt">Gold has been a safe haven for investors for centuries. Here's why investing in
+                        gold might be a good idea...</p>
+                    <a href="blog/27.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 28 -->
+                <article class="blog-post">
+                    <img src="images/28.jpg" alt="Financial Independence">
+                    <h2>Steps to Achieving Financial Independence</h2>
+                    <p class="date">Posted on January 28, 2025</p>
+                    <p class="excerpt">Financial independence is a goal many strive for. Here are the key steps to
+                        achieving it...</p>
+                    <a href="blog/28.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 29 -->
+                <article class="blog-post">
+                    <img src="images/29.jpg" alt="Side Hustles">
+                    <h2>Top Side Hustles to Boost Your Income</h2>
+                    <p class="date">Posted on January 29, 2025</p>
+                    <p class="excerpt">Side hustles are a great way to increase your income. Here are some of the best
+                        side hustles to consider...</p>
+                    <a href="blog/29.html" class="read-more">Read more</a>
+                </article>
+
+                <!-- Blog Post 30 -->
+                <article class="blog-post">
+                    <img src="images/30.jpg" alt="Financial Freedom">
+                    <h2>How to Achieve Financial Freedom</h2>
+                    <p class="date">Posted on January 30, 2025</p>
+                    <p class="excerpt">Achieving financial freedom is possible with the right mindset and strategy.
+                        Here's how you can do it...</p>
+                    <a href="blog/30.html" class="read-more">Read more</a>
+                </article>
+            </div>
+        </div>
+    </main>
+
+      <!-- ads  -->
+      <div id="ad-anchor-slot"></div>
+
+      <script>
+          // Disable right-click
+          document.addEventListener('contextmenu', function (e) {
+              e.preventDefault();
+              alert('Right-click is disabled to protect our content.');
+          });
+
+          // Disable keyboard shortcuts
+          document.onkeydown = function (e) {
+              if (
+                  (e.ctrlKey && (e.key === 'u' || e.key === 's' || e.key === 'c' || e.key === 'i' || e.key === 'j')) ||
+                  e.key === 'F12' ||
+                  (e.metaKey && e.altKey && e.key === 'i')
+              ) {
+                  e.preventDefault();
+                  alert('Access to developer tools and source code is disabled to protect our content.');
+                  return false;
+              }
+              return true;
+          };
+
+          // Disable text selection
+          document.addEventListener('selectstart', function (e) {
+              e.preventDefault();
+          });
+
+          // Disable drag and drop
+          document.addEventListener('dragstart', function (e) {
+              e.preventDefault();
+          });
+      </script>
+
+      <script>
+          var anchorSlot;
+          googletag.cmd.push(function () {
+              anchorSlot = googletag.defineOutOfPageSlot('/23270265301/sahajanand_investoryx.info_native', googletag.enums.OutOfPageFormat.BOTTOM_ANCHOR);
+              if (anchorSlot) {
+                  anchorSlot.addService(googletag.pubads());
+              }
+              googletag.pubads().enableSingleRequest();
+              googletag.enableServices();
+          });
+      </script>
+
+</body>
+
+</html>
